@@ -1,6 +1,6 @@
 
 
-body, html {
+html, body {
     height: 100%;
     margin: 0%;
     font-size: 15px; 
@@ -74,29 +74,40 @@ nav li a:hover {
     }
 }
 
-/* section1 */
-#homePage {
+html::after {
+    content: "";
     background-image: url(/nztrip-staticpage/IMG_1208.jpg);
-    background-position: right top;
-    width: 100%;
-    min-height: 980px;
-    position: relative;
-    
-    opacity: 0.90;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    opacity: 0.8;
+    top: 0;
+    left: 0;
+    bottom: 0px;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+    height: 110vh;
+}
 
+
+
+
+
+/* section1 */
+#homePage {
+    min-height: 980px;
+    position: relative;
     animation-name: homeFadeIn;
     animation-duration: 3s;
 }
 
 @keyframes homeFadeIn {
     from {
-        opacity: 0.5;
+        opacity: 0.2;
     } to {
-        opacity: 0.9;
+        opacity: 1;
     }
 
 }
@@ -131,50 +142,135 @@ nav li a:hover {
 
 @media screen and (max-width: 770px) {
     #homePage > div { 
-        width: 400px;
+        width: 300px;
         transform: translate(-50%, -30%);
     }
     .askText {
-        font-size: 28px;
+        font-size: 26px;
     }
     .askText > .NewZ {
-        font-size: 70px;
+        font-size: 60px;
     }
     
+}
+
+.introText {
+    text-align: center;
+    background-color: rgb(46, 45, 45);
+    font-size: 50px;
+    font-family: 'Handlee', cursive;
+    color: white;
+    margin: 0;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 /* section2 */
 #wellington {
-    height: 900px;
-    background-color: ivory;
-}
-
-
-.wellyImgs {
-    display: block;
+    margin: auto;
     width: 100%;
-    animation-name: imgSlide;
-    animation-duration: 10s;
-    animation-iteration-count: infinite;
-    background-size: cover;
+    height: 100vh;
 }
 
-@keyframes imgSlide {
-    0%{
-      background-image: url(/nztrip-staticpage/IMG_3858.jpg);
-    }
-    50%{
-      background-image: url(/nztrip-staticpage/IMG_4883.jpg);
-    }
-    100%{
-      background-image: url(/nztrip-staticpage/IMG_3858.jpg);
-    }
+#wellington::after {
+    content: "";
+    background-image: url("/nztrip-staticpage/wellybackground.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: 0.5;
+    top: 110vh;
+    left: 0;
+    bottom: 0px;
+    right: 0;
+    z-index: -1;   
+    position: absolute;
+    height: 100vh;
+}
+
+.slideBox {
+    margin: 15px auto;
+    width: 80%;
+    height: clac(var(--width)*47.88/71.82);
+    clear: both;
+    overflow: hidden;
+    border: 10px solid transparent;
+    border-image: linear-gradient(to top, rgb(250, 253, 250) 0%, rgb(102, 99, 99) 100%);
+    border-image-slice: 3;
+}
+.wellyImgs {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: clac(var(--width)/3*47.88/71.82);
+    clear: both;
     
- }
+    -webkit-transition: left 2s;
+    -moz-transition: left 2s;
+    -o-transition: left 2s;
+    transition: left 2s;
+}
+
+
+.wellyImgs>.slide {
+    position: relative;
+    width: 100%;
+    float: left;
+}
 
  @media screen and (max-width: 770px) {
-    .wellyImgs {
-        width: 456.3px;
-        height: 304.2px;
+    .slideBox {
+        width: 322.812px;
+        height: 239.1137px;
+        margin: 50px auto;
+    }
+    .wellyImgs>.slide {
+        width: 322.812px;
+        height: 239.1137px;
+    }
+    #wellington::after {
+        height: 50vh;
+    }
+    .slideBtn {
+
     }
  }
+
+#slide-1:target ~ .wellyImgs {
+    left: 0px;
+  }
+#slide-2:target ~ .wellyImgs {
+    left: -100%;
+  }
+#slide-3:target ~ .wellyImgs {
+    left: -200%;
+}  
+
+@media screen and (min-width: 1530px) {
+    .slideBox  {
+        width: 1256.85px;
+        height: 837.9;
+    }
+    
+}
+
+.slideBtn {
+    position: relative;
+    left: 50%;
+    top: 0%;
+    transform: translate(0, -50%);
+  }
+
+.slideBtn > a {
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    border-radius: 50px;
+    background-color: rgba(0, 0, 0, 0.671);
+  }
+
+
+  #tongariro {
+    height: 10000px;
+  }
